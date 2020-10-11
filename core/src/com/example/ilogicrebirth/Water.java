@@ -14,7 +14,7 @@ public class Water extends Actor {
     }
 
     public Water(int x, int y) {
-        sprite = new Sprite(MyGame.getInstance().assetManager.get("tiles/Water.png", Texture.class));
+        this();
         sprite.setX(x);
         sprite.setY(y);
     }
