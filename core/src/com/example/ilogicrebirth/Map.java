@@ -5,11 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 
 
-enum Tiles{
-    Water,
-    Grass,
-    Cliff
-}
+
 
 public class Map extends Stage {
 
