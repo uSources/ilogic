@@ -10,6 +10,10 @@ public class MyGame extends ApplicationAdapter {
 	Texture texture;
 	@Override
 	public void create () {
+		Pixmap cursor = new Pixmap(Gdx.files.internal("misc/mouse.png"));
+		int xHotspot = 7;
+		int yHotspot = 0;
+		Gdx.graphics.setCursor(Gdx.graphics.newCursor(cursor,xHotspot,yHotspot));
 		batch = new SpriteBatch();
 		texture = new Texture("badlogic.jpg");
 	}
