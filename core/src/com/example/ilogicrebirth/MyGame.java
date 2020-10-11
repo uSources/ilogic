@@ -23,10 +23,8 @@ public class MyGame extends ApplicationAdapter {
 		assetManager.load("tiles/Water.png", Texture.class);
 		assetManager.finishLoading();
 		mapGenerator = new MapGenerator();
-		Pixmap cursor = new Pixmap(Gdx.files.internal("misc/mouse.png"));
-		int xHotspot = 7;
-		int yHotspot = 0;
-		Gdx.graphics.setCursor(Gdx.graphics.newCursor(cursor,xHotspot,yHotspot));
+		Pixmap cursor = new Pixmap(Gdx.files.internal("misc/crosshair.png"));
+		Gdx.graphics.setCursor(Gdx.graphics.newCursor(cursor,16,16));
 	}
 
 	@Override
