@@ -5,9 +5,9 @@ name: Generate dist desktop jar
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
@@ -24,3 +24,11 @@ jobs:
       run: chmod +x gradlew
     - name: Desktop dist
       run: ./gradlew desktop:dist
+    - name: Checkout code
+    - uses: actions/checkout@v2
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      with:
+        draft: true
+  
