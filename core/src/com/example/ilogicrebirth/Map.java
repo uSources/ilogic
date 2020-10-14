@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.util.List;
 
-
 public class Map extends Stage {
     public final int MAP_HEIGHT = 25;
     public final int MAP_WIDTH = 25;
@@ -19,13 +18,6 @@ public class Map extends Stage {
 
     public Map(List<Tile> tileList) {
         this.tileList = tileList;
-
-        for (int y = 0; y < MAP_HEIGHT; y++) {
-            for (int x = 0; x < MAP_WIDTH; x++) {
-                map[y][x] = (x + y) % tileList.size();
-            }
-        }
-
     }
 
     @Override

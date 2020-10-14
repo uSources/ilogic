@@ -17,8 +17,9 @@ public class MyGame extends ApplicationAdapter {
 
 		assetManager = new Assets();
 		TileLoader tileLoader = new TileLoader(assetManager);
+		MapGenerator mapGenerator = new MapGenerator(tileLoader.loadTiles());
 
-		map = new Map(tileLoader.loadTiles());
+		map = mapGenerator.generateMap();
 
 		Pixmap cursor = new Pixmap(Gdx.files.internal("misc/crosshair.png"));
 		Gdx.graphics.setCursor(Gdx.graphics.newCursor(cursor,16,16));

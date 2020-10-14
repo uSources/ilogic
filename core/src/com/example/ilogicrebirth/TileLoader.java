@@ -28,7 +28,7 @@ public class TileLoader {
                 new TextureRegion(assetManager.<Texture>get("tiles/GrassCliff.png")),
         };
 
-        tileList.add(new Tile("Water", new Animation<>(0.5f, waterRegions)));
+        tileList.add(new Tile("Water", new Animation<>(1f, waterRegions)));
         tileList.add(new Tile("Cliff", new Animation<>(0f, cliffRegions)));
 
         return tileList;
