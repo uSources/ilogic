@@ -8,16 +8,11 @@ public class MyGame extends ApplicationAdapter {
 	Map map;
 	Assets assetManager;
 
-	public static MyGame getInstance() {
-		return (MyGame) Gdx.app.getApplicationListener();
-	}
-
 	@Override
 	public void create () {
 
 		assetManager = new Assets();
-		TileLoader tileLoader = new TileLoader(assetManager);
-		MapGenerator mapGenerator = new MapGenerator(tileLoader.loadTiles());
+		MapGenerator mapGenerator = new MapGenerator(assetManager);
 
 		map = mapGenerator.generateMap();
 

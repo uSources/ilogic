@@ -9,6 +9,11 @@ public class UnitType {
 
     public UnitType() { }
 
+    public UnitType(String name, Animation<TextureRegion> animation) {
+        this.name = name;
+        this.animation = animation;
+    }
+
     public String getName() {
         return name;
     }
