@@ -19,4 +19,13 @@ public class Assets extends AssetManager {
         this.load(sWater, Texture.class);
         this.finishLoading();
     }
+
+    @Override
+    public synchronized void dispose() {
+        this.unload(water);
+        this.unload(sWater);
+        this.unload(cliff);
+
+        super.dispose();
+    }
 }

@@ -37,6 +37,7 @@ public class MyGame extends ApplicationAdapter {
 	
 	@Override
 	public void dispose () {
+		assetManager.dispose();
 		map.dispose();
 	}
 }
