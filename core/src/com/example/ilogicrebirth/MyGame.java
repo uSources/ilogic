@@ -8,7 +8,6 @@ public class MyGame extends ApplicationAdapter {
 	Map map;
 	Assets assetManager;
 
-
 	public static MyGame getInstance() {
 		return (MyGame) Gdx.app.getApplicationListener();
 	}
@@ -17,8 +16,10 @@ public class MyGame extends ApplicationAdapter {
 	public void create () {
 
 		assetManager = new Assets();
-		assetManager.finishLoading();
-		map = new Map();
+		TileLoader tileLoader = new TileLoader(assetManager);
+
+		map = new Map(tileLoader.loadTiles());
+
 		Pixmap cursor = new Pixmap(Gdx.files.internal("misc/crosshair.png"));
 		Gdx.graphics.setCursor(Gdx.graphics.newCursor(cursor,16,16));
 	}

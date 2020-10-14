@@ -2,25 +2,27 @@ package com.example.ilogicrebirth;
 
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+
+import java.util.List;
 
 
 public class Map extends Stage {
-
     public final int MAP_HEIGHT = 25;
     public final int MAP_WIDTH = 25;
     float stateTime;
 
-    public final Tiles[][] map = new Tiles[MAP_HEIGHT][MAP_WIDTH];
+    private final List<Tile> tileList;
 
+    private final int[][] map = new int[MAP_HEIGHT][MAP_WIDTH];
 
-    public Map() {
+    public Map(List<Tile> tileList) {
+        this.tileList = tileList;
+
         for (int y = 0; y < MAP_HEIGHT; y++) {
             for (int x = 0; x < MAP_WIDTH; x++) {
-                map[y][x] = (x + y) % 2 == 0 ? Tiles.Water : Tiles.Cliff;
-
+                map[y][x] = (x + y) % tileList.size();
             }
         }
 
@@ -28,15 +30,29 @@ public class Map extends Stage {
 
     @Override
     public void draw() {
+        Batch batch = this.getBatch();
+
         stateTime += Gdx.graphics.getDeltaTime();
-        getBatch().begin();
+        batch.begin();
         for (int y = 0; y < MAP_HEIGHT; y++) {
             for (int x = 0; x < MAP_WIDTH; x++) {
-                this.getBatch().draw((TextureRegion) MyGame.getInstance().assetManager.getTile(map[x][y]).getKeyFrame(stateTime, true), x * 32, y * 32);
+                batch.draw(tileList.get(map[y][x]).getAnimation().getKeyFrame(stateTime, true), x * 32, y * 32);
             }
         }
-        getBatch().end();
+        batch.end();
     }
 
+    public List<Tile> getTileList() {
+        return tileList;
+    }
 
+    public Tile getTile(int y, int x) {
+        return tileList.get(map[y][x]);
+    }
+
+    public void setTile(int y, int x, int tileIndex) {
+        if(tileIndex < 0 || tileIndex >= tileList.size()) return; //throw exception?
+
+        map[y][x] = tileIndex;
+    }
 }
