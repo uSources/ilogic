@@ -34,7 +34,7 @@ public class Map extends Stage {
         batch.begin();
         for (int y = 0; y < map.length; y++) {
             for (int x = 0; x < map[y].length; x++) {
-                batch.draw(tileList.get(map[y][x]).getAnimation().getKeyFrame(stateTime, true), x * 32, y * 32);
+                batch.draw(tileList.get(map[y][x]).getKeyFrame(stateTime, true), x * 32, y * 32);
             }
         }
         batch.end();

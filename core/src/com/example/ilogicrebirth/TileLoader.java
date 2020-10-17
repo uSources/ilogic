@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.JsonValue;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.FileHandler;
 
@@ -48,19 +49,22 @@ public class TileLoader {
     //Read tiles data from JSON file
     public List<Tile> loadTiles(String tilesJson, TextureAtlas tilesAtlas) {
 
-        List<Tile> tileList = new ArrayList<>();
+        HashMap<String, Tile> tileList = new HashMap<>();
 
         JsonReader json = new JsonReader();
         JsonValue base = json.parse(Gdx.files.internal(tilesJson));
-        for (JsonValue component : base)  {
+
+        for (JsonValue component : base) {
             String tileName = component.getString("name");
-            String tileSheetName = component.getString("tileSheetName");
-            int frameDuration = component.getInt("frameDuration");
-            Array<TextureAtlas.AtlasRegion> frameRegions = tilesAtlas.findRegions(tileSheetName);
-            tileList.add(
-                    new Tile(tileName,
-                    new Animation<TextureRegion>(frameDuration, frameRegions)));
+            if (!tileList.containsKey(tileName)) {
+                String tileSheetName = component.getString("tileSheetName");
+                int frameDuration = component.getInt("frameDuration");
+                Array<TextureAtlas.AtlasRegion> frameRegions = tilesAtlas.findRegions(tileSheetName);
+                tileList.put(tileName,
+                        new Tile(tileName, new Animation<TextureRegion>(frameDuration, frameRegions)));
+            }
+
         }
-        return tileList;
+        return new ArrayList<>(tileList.values());
     }
 }
