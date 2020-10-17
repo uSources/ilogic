@@ -22,13 +22,14 @@ public class Map extends Stage {
     public Map(List<Tile> tileList, List<UnitType> unitTypeList) {
         this.tileList = tileList;
         this.map = new int[MAP_HEIGHT][MAP_WIDTH];
+        this.unitTypeList = unitTypeList;
+        this.unitList = new ArrayList<>();
     }
 
-    public Map(List<Tile> tileList, final int height, final int width) {
+    public Map(List<Tile> tileList, List<UnitType> unitTypeList, final int height, final int width) {
         this.tileList = tileList;
         this.map = new int[height][width];
         this.unitTypeList = unitTypeList;
-
         this.unitList = new ArrayList<>();
     }
 

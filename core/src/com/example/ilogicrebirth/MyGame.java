@@ -18,7 +18,7 @@ public class MyGame extends ApplicationAdapter {
 
 		assetManager = new Assets();
 		TileLoader tileLoader = new TileLoader(assetManager);
-		MapGenerator mapGenerator = new MapGenerator(tileLoader.loadTiles("data/tiles.json", assetManager.<TextureAtlas>get("tiles/tiles.atlas")));
+		MapGenerator mapGenerator = new MapGenerator(assetManager);
 
 		map = mapGenerator.generateMap("data/testmap.json");
 

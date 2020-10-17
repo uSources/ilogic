@@ -1,6 +1,7 @@
 package com.example.ilogicrebirth;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 
@@ -13,10 +14,9 @@ public class MapGenerator {
 
     public MapGenerator(Assets assets) {
         this.assets = assets;
-
         TileLoader tileLoader = new TileLoader(assets);
         UnitTypeLoader unitTypeLoader = new UnitTypeLoader(assets);
-        this.tileList = tileLoader.loadTiles();
+        this.tileList = tileLoader.loadTiles("data/tiles.json", assets.<TextureAtlas>get("tiles/tiles.atlas"));
         this.unitTypeList = unitTypeLoader.loadUnits();
     }
 
@@ -29,8 +29,6 @@ public class MapGenerator {
             }
         }
 
-        map.addUnit(0, 0, 0);
-
         return map;
     }
 
@@ -40,7 +38,7 @@ public class MapGenerator {
         JsonValue height = base.get("height");
         JsonValue width = base.get("width");
         JsonValue mapValues = base.get("map");
-        Map map = new Map(tileList, height.asInt(), width.asInt());
+        Map map = new Map(tileList, unitTypeList, height.asInt(), width.asInt());
 
 
         for (int y = 0; y < mapValues.size; y++) {
@@ -48,6 +46,8 @@ public class MapGenerator {
                 map.setTile(y, x, mapValues.get(y).get(x).asInt());
             }
         }
+
+        map.addUnit(0, 0, 0);
 
         return map;
     }

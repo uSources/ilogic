@@ -27,24 +27,6 @@ public class TileLoader {
         this.assetManager = assetManager;
     }
 
-    //Load some default tile data for testing
-    public List<Tile> loadTiles() {
-        List<Tile> tileList = new ArrayList<>();
-
-        final TextureRegion[] waterRegions = new TextureRegion[]{
-                new TextureRegion(assetManager.<Texture>get(Assets.waterFile)),
-                new TextureRegion(assetManager.<Texture>get(Assets.sWaterFile)),
-        };
-
-        final TextureRegion[] cliffRegions = new TextureRegion[]{
-                new TextureRegion(assetManager.<Texture>get(Assets.cliffFile)),
-        };
-
-        tileList.add(new Tile("Water", new Animation<>(1f, waterRegions)));
-        tileList.add(new Tile("Cliff", new Animation<>(0f, cliffRegions)));
-
-        return tileList;
-    }
 
     //Read tiles data from JSON file
     public List<Tile> loadTiles(String tilesJson, TextureAtlas tilesAtlas) {
