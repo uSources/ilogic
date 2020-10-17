@@ -58,7 +58,7 @@ public class TileLoader {
             String tileName = component.getString("name");
             if (!tileList.containsKey(tileName)) {
                 String tileSheetName = component.getString("tileSheetName");
-                int frameDuration = component.getInt("frameDuration");
+                float frameDuration = component.getFloat("frameDuration");
                 Array<TextureAtlas.AtlasRegion> frameRegions = tilesAtlas.findRegions(tileSheetName);
                 tileList.put(tileName,
                         new Tile(tileName, new Animation<TextureRegion>(frameDuration, frameRegions)));
