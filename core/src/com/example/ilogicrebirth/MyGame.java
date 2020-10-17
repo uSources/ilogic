@@ -3,6 +3,7 @@ package com.example.ilogicrebirth;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public class MyGame extends ApplicationAdapter {
 	Map map;
@@ -17,7 +18,7 @@ public class MyGame extends ApplicationAdapter {
 
 		assetManager = new Assets();
 		TileLoader tileLoader = new TileLoader(assetManager);
-		MapGenerator mapGenerator = new MapGenerator(tileLoader.loadTiles());
+		MapGenerator mapGenerator = new MapGenerator(tileLoader.loadTiles("data/tiles.json", assetManager.<TextureAtlas>get("tiles/tiles.atlas")));
 
 		map = mapGenerator.generateMap("data/testmap.json");
 

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Water",
+    "id": 1,
+    "tileSheetName": "Water",
+    "frameDuration": 1
+  },
+  {
+    "name": "GrassCliff",
+    "id": 2,
+    "tileSheetName": "GrassCliff",
+    "frameDuration": 1
+  }
+]
