@@ -32,12 +32,12 @@ public class TileLoader {
         List<Tile> tileList = new ArrayList<>();
 
         final TextureRegion[] waterRegions = new TextureRegion[]{
-                new TextureRegion(assetManager.<Texture>get("tiles/Water.png")),
-                new TextureRegion(assetManager.<Texture>get("tiles/SWater.png")),
+                new TextureRegion(assetManager.<Texture>get(Assets.waterFile)),
+                new TextureRegion(assetManager.<Texture>get(Assets.sWaterFile)),
         };
 
         final TextureRegion[] cliffRegions = new TextureRegion[]{
-                new TextureRegion(assetManager.<Texture>get("tiles/GrassCliff.png")),
+                new TextureRegion(assetManager.<Texture>get(Assets.cliffFile)),
         };
 
         tileList.add(new Tile("Water", new Animation<>(1f, waterRegions)));
