@@ -14,10 +14,16 @@ public class Map extends Stage {
 
     private final List<Tile> tileList;
 
-    private final int[][] map = new int[MAP_HEIGHT][MAP_WIDTH];
+    private final int[][] map;
 
     public Map(List<Tile> tileList) {
         this.tileList = tileList;
+        this.map = new int[MAP_HEIGHT][MAP_WIDTH];
+    }
+
+    public Map(List<Tile> tileList, final int height, final int width) {
+        this.tileList = tileList;
+        this.map = new int[height][width];
     }
 
     @Override
@@ -26,8 +32,8 @@ public class Map extends Stage {
 
         stateTime += Gdx.graphics.getDeltaTime();
         batch.begin();
-        for (int y = 0; y < MAP_HEIGHT; y++) {
-            for (int x = 0; x < MAP_WIDTH; x++) {
+        for (int y = 0; y < map.length; y++) {
+            for (int x = 0; x < map[y].length; x++) {
                 batch.draw(tileList.get(map[y][x]).getAnimation().getKeyFrame(stateTime, true), x * 32, y * 32);
             }
         }
